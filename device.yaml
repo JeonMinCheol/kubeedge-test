@@ -1,0 +1,24 @@
+apiVersion: devices.kubeedge.io/v1alpha2
+kind: Device
+metadata:
+  name: test-instance
+  labels:
+    description: test
+    model: test
+spec:
+  deviceModelRef:
+    name: test
+  nodeSelector:
+    nodeSelectorTerms:
+    - matchExpressions:
+      - key: ''
+        operator: In
+        values:
+        - sun          
+status:
+  twins:
+    - propertyName: say_something
+      desired:
+        metadata:
+          type: string
+        value: 'hello world'

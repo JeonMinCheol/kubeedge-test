@@ -1,0 +1,13 @@
+apiVersion: devices.kubeedge.io/v1alpha2
+kind: DeviceModel
+metadata:
+ name: test
+ namespace: default
+spec:
+ properties:
+  - name: say_something
+    description: Anything what you want
+    type:
+      string:
+        accessMode: ReadWrite
+        defaultValue: 'hello world'

@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: KubeEdge-test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: KubeEdge_test
+  template:
+    metadata:
+      labels:
+        app: KubeEdge_test
+    spec:
+      hostNetwork: true
+      containers:
+      - name: kube-edge-test
+        image: jmc0504/kubeedge_test:v1.1
+        imagePullPolicy: Always
+        securityContext:
+          privileged: true
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/kubeedge/
+      volumes:
+      - name: config-volume
+        configMap:
+          name: device-profile-config-sun
+      restartPolicy: Always
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: Role
+metadata:
+  name: kube-edge-test-role
+  namespace: default
+rules:
+- apiGroups: ["devices.kubeedge.io"]
+  resources: ["devices"]
+  verbs: ["get", "patch"]
+
+---
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: RoleBinding
+metadata:
+  name: kube-edge-test-rbac
+  namespace: default
+subjects:
+  - kind: ServiceAccount
+    name: default
+roleRef:
+  kind: Role
+  name: kube-edge-test-role
+  apiGroup: rbac.authorization.k8s.io
