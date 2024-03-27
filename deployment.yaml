@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: KubeEdge-test-deployment
+  name: kubeedge-test-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: KubeEdge_test
+      app: kubeedge_test
   template:
     metadata:
       labels:
-        app: KubeEdge_test
+        app: kubeedge_test
     spec:
       hostNetwork: true
       containers:
@@ -28,7 +28,7 @@ spec:
           name: device-profile-config-sun
       restartPolicy: Always
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   name: kube-edge-test-role
@@ -39,7 +39,7 @@ rules:
   verbs: ["get", "patch"]
 
 ---
-apiVersion: rbac.authorization.k8s.io/v1beta1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
   name: kube-edge-test-rbac
