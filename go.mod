@@ -1,6 +1,6 @@
-module jmc0504/test
-
-go 1.21.6
+module jmc0504
+// 버전 변경하지 말 것
+go 1.19 
 
 require (
 	github.com/eclipse/paho.mqtt.golang v1.4.3
@@ -9,8 +9,7 @@ require (
 )
 
 require (
-	github.com/gorilla/websocket v1.5.0 // indirect
-	github.com/kubeedge/examples/led-raspberrypi v0.0.0-20220624013407-dd67137ab375 // indirect
-	golang.org/x/net v0.8.0 // indirect
-	golang.org/x/sync v0.1.0 // indirect
+	github.com/gorilla/websocket v1.5.1 // indirect
+	golang.org/x/net v0.22.0 // indirect
+	golang.org/x/sync v0.6.0 // indirect
 )

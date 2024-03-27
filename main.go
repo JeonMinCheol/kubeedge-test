@@ -5,12 +5,11 @@ import (
 	"encoding/json"
 	"errors"
 	"flag"
+	"jmc0504/configuration"
 	"os"
 	"strings"
 	"sync"
 	"time"
-
-	"github.com/kubeedge/examples/led-raspberrypi/configuration"
 
 	MQTT "github.com/eclipse/paho.mqtt.golang"
 	"github.com/golang/glog"

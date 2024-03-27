@@ -15,7 +15,7 @@ spec:
       hostNetwork: true
       containers:
       - name: kube-edge-test
-        image: jmc0504/kubeedge_test:v1.1
+        image: jmc0504/kubeedge_test
         imagePullPolicy: Always
         securityContext:
           privileged: true
